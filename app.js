@@ -9,38 +9,71 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+const { userInfo } = require("os");
 
 const questions = [
-  {
-    type: "input",
-    name: "name",
-    message: "What is your manager's name?",
-  },
-  {
-    type: "input",
-    name: "role",
-    message: "What is your role?",
-  },
-  {
-    type: "input",
-    name: "email",
-    message: "What is your manager's email",
-  },
-  {
-    type: "input",
-    name: "id",
-    message: "What is your manager's ID",
-  },
   {
     type: "list",
     name: "employeeType",
     message: "Which type of team member would you like to add?",
-    choices: [`Manager``Engineer`, `Intern`],
+    choices: [`Manager`, `Engineer`, `Intern`, `Done`],
   },
-
-  // function to write README file
-  //   function writeToFile(README, data) {}
+  {
+    type: "input",
+    name: "name",
+    message: "What is the employee's name?",
+  },
+  {
+    type: "input",
+    name: "role",
+    message: "What is their role?",
+  },
+  {
+    type: "input",
+    name: "email",
+    message: "What is their email?",
+  },
+  {
+    type: "input",
+    name: "id",
+    message: "What is their id?",
+  },
+  {
+    type: "input",
+    name: "officeNumber",
+    message: "What is their office number?",
+  },
+  {
+    type: "input",
+    name: "github",
+    message: "What is their Github username?",
+  },
+  {
+    type: "input",
+    name: "school",
+    message: "What is the name of their school?",
+  },
 ];
+// function to write README file
+// function writeToFile(outputPath, data) {}
+
+function infoPrompt() {
+  return inquirer.prompt(questions);
+}
+//     .then((userInfo) => {
+//       const team = outputPath(userInfo);
+//       fs.writeFile(team.html, team, function (err) {
+//         if (err) {
+//           return console.log(err);
+//         }
+//         console.log("Success!");
+//       });
+//       console.log(userInfo);
+//     })
+//     .catch((err) => console.log(err));
+// }
+
+render();
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
