@@ -8,7 +8,7 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 
-// CALLS HTML TEMPLATES
+//HTML TEMPLATES
 const render = require("./lib/htmlRenderer");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
@@ -98,7 +98,7 @@ const internInfo = [
   },
 ];
 
-// FUNCTION FOR QUESTIONS
+// PROMPT FOR EMPLOYEE CHOICES
 function createTeam() {
   inquirer.prompt(employee).then((data) => {
     switch (data.employee) {
@@ -118,22 +118,35 @@ function createTeam() {
   });
 }
 
-// function to write to team.html file
-//  fs.writeToFile(outputPath, data) {
-//     .then((userInput) => {
-//       const team = outputPath(userInput);
-
-//   fs.writeFile(team.html, team, function (err) {
-//     if (err) {
-//       return console.log(err);
-//     }
-//     console.log("Success!");
-//   });
-//   console.log(userInfo);
-// })
-// .catch((err) => console.log(err));
-
-// }
+// MANAGER INFO PROMPT
+const newManager = () => {
+  inquirer.prompt(managerInfo).then((data) => {
+    const manager = new Manager(
+      data.name,
+      data.email,
+      data.id,
+      data.officeNumber
+    );
+    team.push(manager);
+    createTeam();
+  });
+};
+// ENGINEER INFO PROMPT
+const newEngineer = () => {
+  inquirer.prompt(engineerInfo).then((data) => {
+    const engineer = new Engineer(data.name, data.email, data.id, data.github);
+    team.push(engineer);
+    createTeam();
+  });
+};
+// INTERN INFO PROMPT
+const newIntern = () => {
+  inquirer.prompt(internInfo).then((data) => {
+    const intern = new Intern(data.name, data.email, data.id, data.school);
+    team.push(intern);
+    createTeam();
+  });
+};
 
 // render();
 
