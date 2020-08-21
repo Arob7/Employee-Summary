@@ -1,52 +1,93 @@
+// CLASSES
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+
+// MODULES
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 
+// CALLS HTML TEMPLATES
+const render = require("./lib/htmlRenderer");
+
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
-const render = require("./lib/htmlRenderer");
-const { userInfo } = require("os");
+let team = [];
 
-const questions = [
+// ADD EMPLOYEE TYPE
+const employeeType = [
   {
-    type: "list",
+    type: "checkbox",
     name: "employeeType",
-    message: "Which type of team member would you like to add?",
-    choices: [`Manager`, `Engineer`, `Intern`, `Done`],
+    message: "Which type of employee would you like to add?",
+    choices: ["Manager", "Engineer", "Intern", "None"],
   },
+];
+
+// MANAGER QUESTIONS
+const managerInfo = [
   {
     type: "input",
     name: "name",
-    message: "What is the employee's name?",
-  },
-  {
-    type: "input",
-    name: "role",
-    message: "What is their role?",
+    message: "What is manager's name?",
   },
   {
     type: "input",
     name: "email",
-    message: "What is their email?",
+    message: "What is manager's email?",
   },
   {
     type: "input",
     name: "id",
-    message: "What is their id?",
+    message: "What is manager's ID?",
   },
   {
     type: "input",
     name: "officeNumber",
-    message: "What is their office number?",
+    message: "What is manager's office number?",
+  },
+];
+
+const engineerInfo = [
+  {
+    type: "input",
+    name: "name",
+    message: "What is engineer's name?",
+  },
+  {
+    type: "input",
+    name: "email",
+    message: "What is engineer's email?",
+  },
+  {
+    type: "input",
+    name: "id",
+    message: "What is engineer's ID?",
   },
   {
     type: "input",
     name: "github",
     message: "What is their Github username?",
+  },
+];
+
+const internInfo = [
+  {
+    type: "input",
+    name: "name",
+    message: "What is intern's name?",
+  },
+  {
+    type: "input",
+    name: "email",
+    message: "What is intern's email?",
+  },
+  {
+    type: "input",
+    name: "id",
+    message: "What is intern's ID?",
   },
   {
     type: "input",
@@ -54,26 +95,30 @@ const questions = [
     message: "What is the name of their school?",
   },
 ];
-// function to write README file
-// function writeToFile(outputPath, data) {}
 
-function infoPrompt() {
-  return inquirer.prompt(questions);
-}
-//     .then((userInfo) => {
-//       const team = outputPath(userInfo);
-//       fs.writeFile(team.html, team, function (err) {
-//         if (err) {
-//           return console.log(err);
-//         }
-//         console.log("Success!");
-//       });
-//       console.log(userInfo);
-//     })
-//     .catch((err) => console.log(err));
+// FUNCTION FOR QUESTIONS
+// function infoPrompt() {
+//   return inquirer.prompt(questions);
 // }
 
-render();
+// function to write to team.html file
+//  fs.writeToFile(outputPath, data) {
+//     .then((userInput) => {
+//       const team = outputPath(userInput);
+
+//   fs.writeFile(team.html, team, function (err) {
+//     if (err) {
+//       return console.log(err);
+//     }
+//     console.log("Success!");
+//   });
+//   console.log(userInfo);
+// })
+// .catch((err) => console.log(err));
+
+// }
+
+// render();
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
