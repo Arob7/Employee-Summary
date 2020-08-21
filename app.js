@@ -17,7 +17,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 let team = [];
 
 // ADD EMPLOYEE TYPE
-const employeeType = [
+const employee = [
   {
     type: "checkbox",
     name: "employeeType",
@@ -50,6 +50,7 @@ const managerInfo = [
   },
 ];
 
+// ENGINEER QUESTIONS
 const engineerInfo = [
   {
     type: "input",
@@ -73,6 +74,7 @@ const engineerInfo = [
   },
 ];
 
+// INTERN QUESTIONS
 const internInfo = [
   {
     type: "input",
@@ -97,9 +99,24 @@ const internInfo = [
 ];
 
 // FUNCTION FOR QUESTIONS
-// function infoPrompt() {
-//   return inquirer.prompt(questions);
-// }
+function createTeam() {
+  inquirer.prompt(employee).then((data) => {
+    switch (data.employee) {
+      case "Manager":
+        newManager();
+        break;
+      case "Engineer":
+        newEngineer();
+        break;
+      case "Intern":
+        newIntern();
+        break;
+      default:
+        teamSummary();
+        break;
+    }
+  });
+}
 
 // function to write to team.html file
 //  fs.writeToFile(outputPath, data) {
