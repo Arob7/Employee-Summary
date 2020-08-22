@@ -15,6 +15,6 @@ This assignment must also pass all unit tests using Jest. When the user has comp
  </ul>
 
 
-<img src="img\Teamsnip.JPG" alt="Password Generator screenshot"  width="600px">
+<img src="img\Teamsnip.JPG" alt="Password Generator screenshot"  width="900px">
 
 
