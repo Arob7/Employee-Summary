@@ -101,7 +101,7 @@ const internInfo = [
 // PROMPT FOR EMPLOYEE CHOICES
 function createTeam() {
   inquirer.prompt(employee).then((data) => {
-    switch (data.employee) {
+    switch (data.employeeType) {
       case "Manager":
         newManager();
         break;
