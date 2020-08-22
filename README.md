@@ -15,6 +15,8 @@ This assignment must also pass all unit tests using Jest. When the user has comp
  </ul>
 
 
+A link for app demo : https://drive.google.com/file/d/1MM0d5rUO6p8dovxqSm0iA26uveU2Cxt5/view
+
 <img src="img\Teamsnip.JPG" alt="Password Generator screenshot"  width="900px">
 
 
