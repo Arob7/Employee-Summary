@@ -3,4 +3,12 @@ A software engineering team generator command line application. The application 
 
 This assignment must also pass all unit tests. When the user has completed building the team, the application will create an HTML file that displays a nicely formatted team roster based on the information provided by the user.
 
+ <ul>Back-end tools:
+  <li>Inquirer np package</li>
+  <li>Jest</li>
+    <li>Node</li>
+
+
 <img src="img\Teamsnip.JPG" alt="Password Generator screenshot"  width="800px">
+
+
